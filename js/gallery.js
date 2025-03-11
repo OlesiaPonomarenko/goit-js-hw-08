@@ -65,9 +65,18 @@ const images = [
     ];
 
     const ulEl = document.querySelector(".gallery");
-    
-    const liEl = document.createElement("li");
-    liEl.classList.add("title");
-    liEl.textContent = "This is a heading";
+
+// Генерируем HTML-строку для всех изображений
+const galleryMarkup = images.map(({ preview, original, description }) => `
+  <li class="gallery-item">
+    <a class="gallery-link" href="${original}">
+      <img class="gallery-image" src="${preview}" alt="${description}" />
+    </a>
+  </li>
+`).join("");
+
+// Вставляем в `.gallery`
+ulEl.insertAdjacentHTML("beforeend", galleryMarkup);
+
 
 
